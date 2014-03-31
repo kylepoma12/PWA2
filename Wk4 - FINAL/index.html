@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<!-- FAVICON -->
+<link rel="icon" href="images/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="css/grid.css">
+<!-- JQUERY UI -->
+<link rel="stylesheet" type="text/css" href="css/jqui.css">
+
+<!-- JQUERY SELECT UI -->
+<link rel="stylesheet" type="text/css" href="css/chosen.css">
+
+<!-- GOOGLE FONT -->
+<link href='http://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+
+<!-- JQUERY -->
+<script type="text/javascript" src="js/jquery.min.js">
+</script>
+
+<!-- JQUERY UI-->
+<script type="text/javascript" src="js/jquery-ui.min.js">
+</script>
+
+<!-- JQUERY SELECT BOX UI PLUGIN -->
+<script type="text/javascript" src="js/chosen.jquery.min.js">
+</script>
+
+<!-- FUNCTIONS JS -->
+<script type="text/javascript" src="js/funx.js">
+</script>
+
+<!-- DOM READY JS -->
+<script type="text/javascript" src="js/body.js">
+</script>
+
+<title>Timetrax</title>
+</head>
+<body>             
+<div class="grid">
+<div id="header">
+<div id="logo">
+<a href="index.html" title="Timetrax Project Tracking"><img src="images/logo.png" width="300" height="75" alt="Timetrax" /></a>
+</div>
+
+<div id="rlogin" class="ltgrey ui-corner-all">
+<div style="padding:2px 5px;">
+<span id="logtxt" title="Click here to log in">LOGIN</span>
+</div>
+
+<form id="login" name="login" action="xhr/login.php" method="post" class="nodisplay">
+
+<input id="rusername" name="rusername" type="text" value="username" class="input"/>
+
+<input id="rpassword" name="rpassword" type="password" value="Password" class="input" />
+
+<input type="submit" value="Login" class="input" name="rsubmit" id="rsubmit">
+
+</form>
+<span class="logErr"></span>
+</div>
+</div>
+
+<div id="status" class="alert-box success nodisplay"><span>Project has been successfully updated.</span></div>
+
+<div id="content" class="col-2-3">
+
+
+<div id="screenshots">
+
+<img src="images/sc1.png" style="float:left; margin: 3px 20px 0px 3px;" />
+<ul>
+<li>Project Tracking at its best</li>
+<li>Free to use and unlimited projects</li>
+<li>Projects can have unlimited tasks associated</li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- ICON TOOLBAR -->
+<div id="iconproject" class="col-1-3 nodisplay">
+<img src="images/plus-circle.png" title="Click for new project"/>
+NEW PROJECT
+</div>
+
+
+<!-- REGISTER FORM -->
+<div id="registerForm" class="col-1-3">
+<h3 id="regHeader">Sign up - It's fast and free!</h3>
+<form id="signupForm" action="xhr/register.php" method="post" name="signupForm">
+<div class="formRow">
+    <div class="field">
+    <label for="username" class="label">Username:</label>
+<input id="username" name="username" type="text" value="username" class="input min130" />
+<br />
+
+</div>
+
+<div class="formError" name="formError"></div>
+</div>
+
+
+<div class="formRow">
+    <div class="field">
+    <label for="email" class="label">Email Address:</label>
+<input id="email" name="email" type="text" value="email@domain.com" class="input min130" />
+<br />
+
+</div>
+
+<div class="formError" name="formError"></div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="pass" class="label">Password:</label>
+<input id="pass" name="pass" type="text" value="Password" class="input min130"/>
+</div>
+
+<div class="formError" name="formError"></div>
+</div>
+<div class="formRow">
+    <div class="field">
+    <label for="cpass" class="label">Confirm Password:</label>
+<input id="cpass" name="cpass" type="text" value="confirmPassword" class="input min130" />
+</div>
+
+<div class="formError" name="formError"></div>
+</div>
+
+<div class="signupButton">
+			<input class="submit" type="submit" name="submit" id="submit" value="Signup" />
+		</div>
+</form>
+
+</div>
+
+
+
+
+
+
+
+<!-- NEW PROJECT FORM -->
+<div id="newForm" class="col-1-3 nodisplay">
+<h3 id="newHeader">New Project</h3>
+<form id="npForm" action="xhr/newp.php" method="post" name="npForm">
+<div class="formRow">
+    <div class="field">
+    <label for="npname" class="label">Name:</label>
+<input id="npname" name="npname" type="text" value="Name" class="input min130" />
+<br />
+
+</div>
+</div>
+
+
+<div class="formRow">
+    <div class="field">
+    <label for="npdesc" class="label">Description:</label>
+    <textarea id="npdesc" name="npdesc" type="text" value="Description" class="multiline min130 input"></textarea>
+<br />
+
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="npdate" class="label">Due Date:</label>
+<input id="npdate" name="npdate" type="text" value="Due Date" class="input min130"/>
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="npstatus" class="label statlabel">Status:</label>
+<select id="npstatus" name="npstatus" type="text" value="status">
+<option value="Urgent">
+Urgent
+</option>
+<option value="Normal">
+Normal
+</option>
+<option value="Delayed">
+Delayed
+</option>
+<option value="Finished">
+Finished
+</option>
+</select>
+</div>
+</div>
+<input type="hidden" value="" id="npid" name="npid" />
+<input type="hidden" value="" id="ndateval" name="ndateval" />
+<input type="hidden" value="" id="neuid" name="neuid" />
+
+<div class="editButton">
+	<input type="submit" name="newsubmit" id="newsubmit" value="Add Project" class="input" />
+	</div>
+</form>
+
+</div>
+
+
+
+<!-- EDIT PROJECT FORM -->
+<div id="editForm" class="col-1-3 nodisplay">
+<h3 id="editHeader">Edit Project</h3>
+<form id="eForm" action="xhr/edit.php" method="post" name="eForm">
+<div class="formRow">
+    <div class="field">
+    <label for="pname" class="label">Name:</label>
+<input id="pname" name="pname" type="text" value="Name" class="input min130" />
+<br />
+
+</div>
+</div>
+
+
+<div class="formRow">
+    <div class="field">
+    <label for="pdesc" class="label">Description:</label>
+    <textarea id="pdesc" name="pdesc" type="text" value="Description" class="multiline min130 input"></textarea>
+<br />
+
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="pdate" class="label">Due Date:</label>
+<input id="pdate" name="pdate" type="text" value="Due Date" class="input min130"/>
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="pstatus" class="label statlabel">Status:</label>
+<select id="pstatus" name="pstatus" type="text" value="status">
+<option value="Urgent">
+Urgent
+</option>
+<option value="Normal">
+Normal
+</option>
+<option value="Delayed">
+Delayed
+</option>
+<option value="Finished">
+Finished
+</option>
+</select>
+</div>
+</div>
+<input type="hidden" value="" id="pid" name="pid" />
+<input type="hidden" value="" id="dateval" name="dateval" />
+<input type="hidden" value="" id="euid" name="euid" />
+
+<div class="editButton">
+	<input type="submit" name="submit" id="esubmit" value="Submit" class="input" />
+	</div>
+</form>
+
+</div>
+
+
+
+
+<!-- NEWTASK FORM -->
+
+
+<div id="newtDiv" class="col-1-3 nodisplay">
+<h3 id="newTheader">New task</h3>
+<form id="newTform" action="xhr/newtask.php" method="post" name="newTform">
+<div class="formRow">
+    <div class="field">
+    <label for="tname" class="label">Name:</label>
+<input id="tname" name="tname" type="text" value="Name" class="input min130" />
+<br />
+
+</div>
+</div>
+
+
+<div class="formRow">
+    <div class="field">
+    <label for="tdesc" class="label">Description:</label>
+<textarea id="tdesc" name="tdesc" type="text" value="Description" class="input min130 multiline"></textarea>
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="tdate" class="label">Due Date:</label>
+<input id="tdate" name="tdate" type="text" value="Due Date" class="input min130"/>
+</div>
+</div>
+
+<div class="formRow">
+    <div class="field">
+    <label for="tstatus" class="label">Status:</label>
+<select id="tstatus" name="tstatus" type="text" value="status">
+<option>Urgent</option>
+<option>Normal</option>
+<option>Delayed</option>
+<option>Finished</option>
+</select>
+</div>
+</div>
+<input type="hidden" value="" id="tpid" name="tpid" />
+<input type="hidden" value="" id="tdateval" name="tdateval" />
+<input type="hidden" value="" id="tuid" name="tuid" />
+<input type="hidden" value="" id="taskstatus" name="taskstatus" />
+<div class="editButton">
+	<input type="submit" name="tsubmit" id="tsubmit" value="Add Task" class="input" />
+	</div>
+</form>
+
+</div>
+
+
+
+<!-- TESTIMONIALS -->
+<div id="quotes" class="dark col-1-3"><span class="green">Testimonials:</span>
+ <div id="testimonials">
+        <ul>
+			<li>
+				<blockquote>This has to be the one of the most awesome apps I've ever used!</blockquote>
+				<p class="author">John Doe, <a href="#">johndoe.com</a></p>
+			</li>
+			<li>
+				<blockquote>Simply amazing! It solved all of my problems. I highly recommend this app.</blockquote>
+				<p class="author">John Smith, <a href="#">johnsmith.com</a></p>
+			</li>
+			<li>
+				<blockquote>A great success. It's like walking on air compared to its competitors.</blockquote>
+				<p class="author">Ben Cooper, <a href="#">bencooper.com</a></p>
+			</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+<div class="clear"></div>
+<div id="footer" class="dark">
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+</body>
+</html>
